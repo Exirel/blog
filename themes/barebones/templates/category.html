@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category.name|striptags }}{% endblock %}
+
+{% block page_title %}<h1>Articles de la catégorie {{ category.name }}</h1>{% endblock %}
+
+{% block content %}
+<section class="category page-list">
+    <ul>
+        {% for article in dates %}
+        <li>
+            <time class="published" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalien vers {{ article.title|striptags }}">{{ article.title }}</a><br />
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

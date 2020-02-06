@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block page_nav %}{% endblock %}
+
+{% block content %}
+<section class="page-list">
+    <ul>
+        {% for article in dates_page.object_list %}
+        <li>
+            <time class="published" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalien vers {{ article.title|striptags }}">{{ article.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+<aside>
+    <h3>Catégories</h3>
+    <ul>
+    {% for category, cat_articles in categories|sort %}
+        <li><a href="{{ SITEURL }}/{{ category.url }}">{{ category.name }}</a> ({{ cat_articles|count }})</li>
+    {% endfor %}
+    </ul>
+    <h3>Tags</h3>
+    <ul>
+    {% for tag, tag_articles in tags|sort %}
+        <li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag.name }}</a> ({{ tag_articles|count }})</li>
+    {% endfor %}
+    </ul>
+</aside>
+{% endblock %}

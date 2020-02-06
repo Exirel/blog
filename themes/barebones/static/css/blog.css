@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1.5;
+    font-size: 20px;
+}
+body {
+    font-family: "Liberation Sans", Arial, serif;
+    background-color: #fefeff;
+    padding: 1em;
+}
+
+a {
+    color: #005bbc;
+    text-decoration-skip-ink: auto;
+}
+
+a:hover {
+    color: rebeccapurple;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-top: 0.5em;
+}
+h2 {
+    font-size: 2em;
+}
+* + h2 {
+    margin-top: 1em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+* + h3 {
+    margin-top: 0.5em;
+}
+
+h4 {
+    font-size: 1em;
+    text-decoration: underline;
+    text-decoration-skip: spaces;
+    text-decoration-skip-ink: auto;
+}
+ul {
+    margin: 1.5em 2em;
+}
+p, li, pre {
+    color: #00030c;
+    font-size: 1em;
+}
+* + h4 {
+    margin-top: 1.5em;
+}
+.highlight {
+    margin: 1.5em 0 0 0;
+}
+.highlight pre {
+    background-color: lightgray;
+}
+
+.article * + p {
+    margin-top: 1.5em;
+    text-indent: 1.5em;
+}
+
+.article + .article-meta {
+    margin-top: 1.5em;
+}
+
+@media screen and (min-width: 65em) {
+    .container {
+        display: flex;
+    }
+    .article + .article-meta {
+        margin-top: 0;
+        margin-left: 1em;
+    }
+}
+.container > * {
+    margin: 0;
+    max-width: 40em;
+}
+.page-list {
+    width: 100%;
+}
