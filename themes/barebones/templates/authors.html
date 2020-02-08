@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Auteurs{% endblock %}
+
+{% block page_title %}<h1>Auteurs</h1>{% endblock %}
+
+{% block content %}
+<section class="authors page-list">
+    <ul>
+        {% for author, aut_articles in authors|sort %}
+        <li><a href="{{ SITEURL }}/{{ author.url }}">{{ author.name }}</a> ({{ aut_articles|count }})</li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

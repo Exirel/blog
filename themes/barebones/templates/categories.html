@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Catégories{% endblock %}
+
+{% block page_title %}<h1>Catégories</h1>{% endblock %}
+
+{% block content %}
+<section class="categories page-list">
+    <ul>
+        {% for category, cat_articles in categories|sort %}
+        <li><a href="{{ SITEURL }}/{{ category.url }}">{{ category.name }}</a> ({{ cat_articles|count }})</li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}
