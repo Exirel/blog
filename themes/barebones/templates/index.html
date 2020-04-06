@@ -19,6 +19,7 @@
         florian.strzelecki@gmail.com, ou bien sur Twitter
         <a href="https://twitter.com/exirel">@exirel</a>.
     </p>
+
     <h2>Quelques articles</h2>
     <ul>
         {% for article in dates_page.object_list %}
@@ -30,6 +31,13 @@
     </ul>
 </section>
 <aside>
+    <h3>Pages</h3>
+    <ul>
+        {% for page in pages|sort %}
+            <li><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
+        {% endfor %}
+    </ul>
+
     <h3>Catégories</h3>
     <ul>
     {% for category, cat_articles in categories|sort %}
