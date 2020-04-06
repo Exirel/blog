@@ -120,7 +120,7 @@ faire en sorte de ne pas l'avoir en premier lieu : j'enlève la base de données
 je retire les commentaires, je mets de côté JavaScript entièrement, et je
 reviens à une feuille de style réduite. Pour le reste :
 
-* le contenu sera publié sur `Github`_, dans un dépôt ``git``
+* le contenu sera publié sur `Github`_, dans un `dépôt git`_
 * j'utilise le logiciel `Pelican`_ pour générer du HTML à partir de fichier
   en `reStructuredText`_ (que je maîtrise suffisamment)
 * je pousse le contenu généré sur un petit serveur chez un hébergeur
@@ -139,7 +139,7 @@ dire que j'ai envie d'écrire à nouveau, sans pouvoir en faire la promesse.
 Sans doute un peu de ci, un peu de ça.
 
 Vous pouvez retrouver tout le contenu de ce blog (ainsi que la configuration)
-sur le `repository git`__.
+sur le `dépôt git`_.
 
 
 .. _CIBDI: http://www.citebd.org/
@@ -152,4 +152,4 @@ sur le `repository git`__.
 .. _Github: https://github.com/exirel/blog
 .. _Pelican: https://blog.getpelican.com/
 .. _reStructuredText: https://docutils.sourceforge.io/rst.html
-.. repository git: https://github.com/exirel/blog
+.. _dépôt git: https://github.com/exirel/blog
