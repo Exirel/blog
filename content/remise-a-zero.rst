@@ -25,7 +25,7 @@ petits détails : il fallait avoir une adresse email valide (plus ou moins), et
 surtout, se choisir un pseudonyme.
 
 Il est hors de question que je liste mes pseudonymes de l'époque, il y a des
-choses qui peuvent être oubliés par l'Histoire; je vous remercie. J'en ai tiré
+choses qui peuvent être oubliées par l'Histoire; je vous remercie. J'en ai tiré
 la leçon que la notion d'identité numérique est importante, et que sa
 définition est un très long processus d'essais et d'erreurs, jusqu'à trouver
 la formule qui convient (au moins temporairement).
@@ -65,19 +65,21 @@ compression et des pre-processeurs de fichiers statiques, le dernier serveur,
 la dernière option à la mode, des flux RSS, atom, des commentaires, et bien
 d'autres choses.
 
-Je suis revenu plusieurs fois sur certaines de ces fonctionnalités, les
-commentaires en particulier : au début je les gérais moi-même, puis j'ai tenté
-de passer par Akismet pour empêcher le spam, puis j'ai tout enlevé, pour en
-remettre finalement en utilisant Disqus. Côté design, j'ai aussi un peu tout
-fait : le design surchargé du début (entre 2004 et 2010), des tentatives
-d'épurer un peu entre 2010 et 2014, un envie de tout refaire en mieux ensuite,
-plusieurs fois, jusqu'à arriver à une version hybride simplifiée - mais
-toujours un peu trop complexe à mon goût.
+Je suis revenu plusieurs fois sur certaines de ces fonctionnalités, avec une
+tendance générale à en réduire le nombre, la complexité, et la maintenance.
+Les commentaires, en particulier, sont un bon exemple : au début je les gérais
+moi-même, puis j'ai tenté de passer par Akismet pour empêcher le spam, puis
+j'ai tout enlevé, pour en remettre finalement en utilisant Disqus. Côté design,
+j'ai aussi un peu tout fait : le design surchargé du début (entre 2004 et
+2010), des tentatives d'épurer un peu entre 2010 et 2014, un envie de tout
+refaire en mieux ensuite, plusieurs fois, jusqu'à arriver à une version hybride
+simplifiée - mais toujours un peu trop complexe à mon goût.
 
 Mes envies d'écrire varient avec le temps. S'il m'arrive d'éprouver le
 besoin maladif de coucher sur le papier des centaines de caractères les uns à
 la suite des autres, il m'est beaucoup plus usuel de laisser filer mes pensées
-sans rien écrire. Par flemme, par fatigue, par absence de motivation. Parfois,
+sans rien écrire. Par flemme, par fatigue, par absence de motivation, ou encore
+parce que je n'arrive pas à les articuler de façon intelligible. Parfois,
 c'est aussi bête que le syndrôme de l'imposteur, le sentiment tenace que je
 n'ai rien de bien d'intéressant à écrire, ou, plus agaçant encore, ni la
 légitimité ni la virtuosité de l'écrire. Publier reste un acte fort dans mon
@@ -112,13 +114,15 @@ me permettant d'héberger facilement du contenu sur un serveur.
 
 Il m'apparaît alors comme nécessaire de revenir à des outils plus simples et
 plus faciles à mettre en place. Il faut que la maintenance de ces derniers soit
-minimale, tout en me permettant de s'adapter à mes envies (publier une photo,
+minimale, tout en me permettant de les adapter à mes envies (publier une photo,
 une vidéo, ajouter du texte, mettre un peu de formattage, etc.). Je n'ai pas
 non plus envie de m'embêter avec des histoires de backup de base de données, ou
-de traitement des logs. La façon la plus simple de gérer un problème est de
-faire en sorte de ne pas l'avoir en premier lieu : j'enlève la base de données,
-je retire les commentaires, je mets de côté JavaScript entièrement, et je
-reviens à une feuille de style réduite. Pour le reste :
+de traitement des logs. Comme j'aime le dire souvent : le plus simple pour
+résoudre un problème c'est encore de faire qu'il n'existe pas : j'enlève la
+base de données, je retire les commentaires, je mets de côté JavaScript
+entièrement, et je reviens à une feuille de style réduite.
+
+Pour le reste :
 
 * le contenu sera publié sur `Github`_, dans un `dépôt git`_
 * j'utilise le logiciel `Pelican`_ pour générer du HTML à partir de fichier
