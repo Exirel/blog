@@ -96,6 +96,14 @@ blockquote i, blockquote em {
     margin-top: 1.5em;
 }
 
+.topic {
+    margin-top: 1.5em;
+}
+
+.topic .topic-title {
+    font-style: italic;
+}
+
 .figure p {
     text-align: right;
 }
