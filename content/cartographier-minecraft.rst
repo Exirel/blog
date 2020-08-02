@@ -29,7 +29,7 @@ Et par "un peu" je veux dire "faire un plan complet d'exploration en prenant en
 compte le temps de déplacement, la nourriture nécessaire, les matériaux pour
 construire les avant-postes, ainsi que la façon la plus optimisée de produire
 et/ou récolter ces matériaux et la création de routes de voyage entre tous les
-points intéressants ainsi cartographiés". [#]_ Oh, et sans oublier un point
+points intéressants ainsi cartographiés". [#]_ Oh, et sans oublier un point
 très important, à savoir : trouver et organiser la place pour afficher toutes
 ces cartes.
 
@@ -77,14 +77,14 @@ passer juste sur la couverture cartographique.
 
 Personnellement, je suis passé d'une zone de 3x3 cases au zoom 2, à une zone
 de 7x7 cases au zoom 4. Cela représente 49 cases, entre 2 et 5h chacune, soit
-entre 98 et 245 heures au total. [#]_ L'écart n'est donc plus entre un ou deux
+entre 98 et 245 heures au total. [#]_ L'écart n'est donc plus entre un ou deux
 jours, mais entre 5 et 10 jours de jeu. En continu. Autant dire qu'en terme
-calendaire, cela me prend quelques *mois*. [#]_ Fun, n'est-ce pas ?
+calendaire, cela me prend quelques *mois*. [#]_ Fun, n'est-ce pas ?
 
 Bref, et ça c'est seulement pour se déplacer et couvrir intégralement la
 carte : il reste à prendre en compte le temps de préparation, de construction,
 de récupération de ressources, et, bien entendu, le temps perdu dans la
-contemplation des magnifiques paysages que Minecraft peut vous offrir. [#]_
+contemplation des magnifiques paysages que Minecraft peut vous offrir. [#]_
 
 Prévoir sa route
 ================
@@ -106,7 +106,7 @@ compagnons de voyage. Simple ? Non, pas vraiment, mais on s'y fait.
 
 Une fois que vous avez votre carte ouverte dans la bonne zone, je vous
 conseille de commencer par un bord, et de faire des allers-retours comme si
-vous passiez la tondeuse, le balais, ou la serpillère. [#]_
+vous passiez la tondeuse, le balais, ou la serpillère. [#]_
 
 Cependant, couvrir la carte n'est **que la moitié** du chemin : une fois votre
 zone terminée, où allez-vous ? Qu'allez vous faire ? Que devez vous faire
@@ -157,7 +157,7 @@ peut vous faire gagner beaucoup de temps.
 **Un lit** peut sembler futile, mais rappelez vous que si vous ne jouez pas en
 mode pacifique ou créatif, si vous ne dormez pas plusieurs nuits de suite,
 des fantômes vont apparaître et rendre votre voyage nocturne franchement
-pénible. [#]_ Chasser des moutons en plein milieu de votre exploration n'étant
+pénible. [#]_ Chasser des moutons en plein milieu de votre exploration n'étant
 pas très efficace, je conseille d'avoir un lit sur soi, et de vous synchroniser
 avec vos camarades de jeu.
 
