@@ -121,6 +121,6 @@ de ses vidéos.
        l'homophobie, la transphobie, et bien d'autres discriminations et
        oppressions.
 
-.. __: https://www.youtube.com/channel/UC7pBv8EE3FtDZEF3HtnbFjA
 .. __: https://www.youtube.com/watch?v=zcOVAt13U3w
+.. __: https://www.youtube.com/channel/UC7pBv8EE3FtDZEF3HtnbFjA
 .. __: https://www.iwm.org.uk/history/the-polish-pilots-who-flew-in-the-battle-of-britain
