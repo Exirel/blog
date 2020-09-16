@@ -92,6 +92,7 @@ blockquote i, blockquote em {
     margin-top: 1.5em;
 }
 
+blockquote + p,
 .figure + p {
     margin-top: 1.5em;
 }
