@@ -8,9 +8,9 @@ OUTPUTDIR=$(BASEDIR)/output
 CONFFILE=$(BASEDIR)/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/publishconf.py
 
-SSH_HOST=vps814208.ovh.net
+SSH_HOST=51.75.123.148
 SSH_PORT=22
-SSH_USER=fstrzelecki
+SSH_USER=ubuntu
 SSH_TARGET_DIR=/var/www/xrl.fr/htdocs
 
 
