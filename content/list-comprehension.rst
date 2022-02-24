@@ -17,6 +17,8 @@ Liste en compréhension
 
    .. __: https://commons.wikimedia.org/wiki/File:Sugar_2xmacro.jpg
 
+.. contents:: Sommaire
+
 Une liste est une suite d'éléments, avec un premier, un dernier, et une taille,
 et il est possible d'itérer dessus pour obtenir chacun des éléments, ou bien
 d'utiliser l'index d'un élément pour obtenir ledit élément. Une liste peut se
@@ -91,8 +93,8 @@ Sa structure est composée de trois parties :
 3. **la condition** : et enfin comment la source est filtrée pour n'autoriser
    que certains éléments (ici ``if i % 2 == 0``)
 
-Ces trois parties sont peut-être plus faciles à voir en formattant le code
-de cette façon :
+Ces trois parties sont peut-être plus faciles à voir en formatant le code de
+cette façon :
 
 .. code-block:: python
 
@@ -113,22 +115,23 @@ d'exécution, et le résultat (la variable) va prendre de la place en mémoire 
     <class 'list'>
 
 Comme le résultat est une liste, toutes les opérations sur les listes
-fonctionnent directement sur le résultat (trier, filtrer, itérer, etc.).
-L'avantage, outre les opérations habituelles comme ``len(m)`` pour obtenir la
-taille de la liste, c'est qu'il est possible d'itérer plusieurs fois de suite.
-Bref, c'est une instance de ``list`` tout ce qu'il y a de plus classique.
+fonctionnent directement dessus (trier, filtrer, itérer, etc.). L'avantage,
+outre les opérations habituelles comme ``len(m)`` pour obtenir la taille de la
+liste, c'est qu'il est possible de la parcourir plusieurs fois. Bref, c'est une
+instance de ``list`` tout ce qu'il y a de plus classique.
 
-Cependant, et à la condition de n'avoir besoin d'itérer qu'une seule fois sur
-le résultat, il est possible de ne rien avoir à stocker en mémoire qui ne soit
-strictement nécessaire. Pour cela, il faut se pencher sur les générateurs, et
+Cependant si, et seulement si, il n'est pas nécessaire de parcourir cette liste
+plus d'une fois alors il est possible de ne pas avoir à stocker en mémoire plus
+que le strict nécessaire. Pour cela, il faut se pencher sur les générateurs, et
 les expressions de générateur.
 
 Expression de générateur
 ========================
 
-La `PEP 289`__ donne un exemple de la raison d'être de telles expressions :
-en partant d'une liste d'entiers, il est possible d'en faire la somme avec la
-fonction ``sum``, directement ou bien avec notre liste en compréhension :
+La `PEP 289`__ prend pour exemple la somme d'une liste d'entiers pour expliquer
+l'intérêt des générateurs et de ce type d'expression. Tout d'abord avec une
+liste il est possible d'utiliser la fonction ``sum``, directement ou bien avec
+notre liste en compréhension :
 
 .. code-block:: pycon
 
@@ -137,16 +140,22 @@ fonction ``sum``, directement ou bien avec notre liste en compréhension :
     >>> sum([i**2 for i in l if i % 2 == 0])
     20
 
-Cependant, rappelez vous ce que j'ai écrit plus haut : la liste intermédiaire
-va être exécutée immédiatement, et prendre de la place en mémoire. Si cette
-liste devait être très grande, ou trop grosse, cela aurait des conséquences
-négatives sur les performances. Par exemple, avec plusieurs millions de
-nombres, la liste devrait d'abord être créée en entier, puis transmise à la
-fonction ``sum``, qui aurait alors besoin d'itérer dessus à nouveau. [#]_
+Comme indiqué précédemment la liste intermédiaire va être exécutée
+immédiatement et prendre de la place en mémoire, et ce, avant d'être transmise
+à la fonction ``sum`` qui va devoir parcourir à nouveau cette liste pour
+effectuer son opération : c'est deux fois plus de travail que nécessaire. [#]_
+
+Dans cet exemple, la liste est très courte et ne pose donc pas de problèmes.
+Ce qu'il faut imaginer, ce sont les conséquences sur une liste de très grande
+taille, par exemple une liste de nombres provenant d'un énorme fichier CSV.
+
+Dans ce genre de cas, l'effet sur les performances peut être préjudiciable,
+soit parce que le programme est trop lent, soit parce qu'il consomme trop de
+mémoire (c'est d'autant plus important sur un système aux ressources limitées).
 
 C'est là qu'entre en jeu une expression qui va produire un **générateur**,
-c'est à dire un objet itérateur qui génère un nouvel élément à chaque pas de la
-boucle, jusqu'à atteindre la fin. La syntaxe est identique à la liste en
+c'est à dire un objet itérateur qui génère un nouvel élément à chaque étape du
+parcours, jusqu'à atteindre la fin. La syntaxe est identique à la liste en
 compréhension à ceci près qu'au lieux des crochets ``[ ... ]`` ce sont des
 parenthèses ``( ... )`` qui sont utilisées :
 
@@ -167,12 +176,13 @@ fonction) :
     >>> sum(i**2 for i in l if i % 2 == 0)
     20
 
-Nous retrouvons ici les mêmes trois éléments : l'élément à obtenir, la boucle
-``for-in``, et enfin la condition. La différence ici est que l'expression n'est
-pas exécutée au moment de sa définition, pour cela il faut attendre que
-le code itère sur notre générateur pour qu'il s'exécute, élément après élément.
+Nous retrouvons ici les mêmes trois éléments :
 
-Par l'exemple :
+* l'élément à obtenir,
+* la boucle ``for-in``,
+* et enfin la condition.
+
+Et avec un format différent pour la lisibilité :
 
 .. code-block:: python
 
@@ -182,14 +192,18 @@ Par l'exemple :
         if i % 2 == 0  # condition
     )
 
+La différence ici est que l'expression n'est pas exécutée au moment de sa
+définition, pour cela il faut attendre que le code exécute une boucle sur notre
+générateur pour qu'il s'exécute, élément après élément.
+
 .. __: https://www.python.org/dev/peps/pep-0289/
 
 Fonctionnement du générateur
-----------------------------
+============================
 
-Pour mieux comprendre le fonctionnement de cette expression, je vais utiliser
-une fonction qui se contentera d'afficher un élément puis de le retourner, pour
-l'utiliser dans mon générateur :
+Pour mieux comprendre le fonctionnement de cette expression, voici une fonction
+qui se contentera d'afficher un élément puis de le retourner, et que j'utilise
+ensuite dans mon générateur :
 
 .. code-block:: pycon
 
@@ -199,7 +213,7 @@ l'utiliser dans mon générateur :
     ... 
     >>> g = (debug(i) for i in l)
 
-Maintenant, je peux itérer manuellement sur le générateur grâce à la fonction
+Maintenant, je peux parcourir manuellement le générateur grâce à la fonction
 built-in ``next()`` :[#]_
 
 .. code-block:: pycon
@@ -229,19 +243,22 @@ Deux remarques :
 2. La fonction ``debug`` n'est appelée que sur un seul élément à la fois, une
    fois par appel de ``next()``.
 
-Cela permet de comprendre que l'expression n'est pas exécutée tant qu'il n'y
-a pas d'itération. Les conséquences ? **La liste n'existe pas !** Chaque
-élément est généré à la demande uniquement, et il n'est pas stocké par le
-générateur. C'est pour cela qu'il est très intéressant de fournir un générateur
-à la fonction ``sum()``, puisque cette dernière n'a pas besoin que la liste
-existe, elle se contente d'ajouter le prochain élément de l'itérable pour
-obtenir un résultat.
+Cela permet de comprendre que l'expression n'est pas exécutée tant que le
+générateur n'est pas appelé. Les conséquences ?
+
+    **La liste n'existe pas !**
+
+Chaque élément est généré à la demande uniquement, et il n'est pas stocké par
+le générateur. C'est pour cela qu'il est très intéressant de fournir un
+générateur à la fonction ``sum()``, puisque cette dernière n'a pas besoin que
+la liste "existe" : elle parcourt l'itérable en ajoutant chaque élément à son
+résultat, ne stockant ainsi que ce dernier en mémoire.
 
 Cela en fait donc un outil très pratique lorsqu'il s'agit de traiter un élément
 à la fois sans encombrer la mémoire, en donnant beaucoup plus de contrôle au
 code exploitant ses capacités.
 
-Attention cependant à ne pas oublier quelques détails importants :
+Attention à quelques *détails* importants :
 
 * Un générateur n'est **pas** une liste, il ne possède pas toutes les
   propriétés ni les méthodes d'une liste (il ne permet pas de connaître sa
@@ -249,17 +266,19 @@ Attention cependant à ne pas oublier quelques détails importants :
 * Il n'est pas possible d'itérer plusieurs fois sur un générateur, ce n'est pas
   son but.
 
-Là encore, il faut bien comprendre qu'une expression de générateur n'est que
-du sucre syntaxique pour définir rapidement un générateur. Pour bien comprendre
-les limites de cette expression, il faut comprendre ce qu'est un générateur, et
-ses limites.
+Une expression de générateur n'est que du sucre syntaxique pour définir
+rapidement un générateur. Pour bien comprendre les limites de cette expression,
+il faut comprendre ce qu'est un générateur, et ses limites.
+
+Limitations et potentiels
+=========================
 
 Une seule fois
 --------------
 
-Sans trop rentrer dans tous les détails de ce que sont les générateurs [#]_ il
-m'apparaît important de préciser quelques unes de ses limitations. Tout d'abord
-un exemple de code où je transforme l'expression en liste :
+Sans m'attarder trop en détails sur ce que sont les générateurs [#]_ il
+m'apparaît important de préciser quelques unes de leurs limitations. Tout
+d'abord un exemple :
 
 .. code-block:: pycon
 
@@ -269,22 +288,24 @@ un exemple de code où je transforme l'expression en liste :
     >>> list(g)
     []
 
-Lors de la seconde transformation, le résultat est une liste vide, car le
-générateur est arrivé au bout de son traitement. Il a été entièrement
-**consommé** et ne peut aller plus loin, ce qui donne une liste vide.
+Je tranforme ici un générateur en objet ``list`` une première fois, avec succès
+puisque j'obtiens l'intégralité des éléments. Lors de la seconde
+transformation, le résultat est une liste vide, car le générateur est arrivé au
+bout de son traitement. Il a été entièrement **consommé** et ne peut aller plus
+loin. Le résultat est donc une liste vide.
 
-À chaque fois qu'une opération demande d'itérer sur le générateur, elle
+À chaque fois qu'une opération demande de parcourir le générateur, elle
 provoque son exécution. Cette exécution s'arrête si l'une de ces conditions est
 remplie :
 
-* Le générateur arrive au bout de son trairement, il n'y a donc plus rien à
-  exécuter et la prochaine itération lèvera une exception ``StopIteration``.
-* L'itération est arrêtée manuellement, ce qui cesse mécaniquement d'exécuter
-  le générateur.
+* Le générateur arrive au bout de son traitement, il n'y a donc plus rien à
+  exécuter (le générateur lèvera une exception ``StopIteration``).
+* Le parcours est arrêté manuellement, ce qui cesse mécaniquement d'exécuter le
+  générateur.
 
-En quelque sorte, l'itération **consomme** le générateur, et une fois consommé
-il n'y a plus rien. Cela peut parfois mener à des bugs lors de situations
-difficiles à appréhender. Commençons par une liste :[#]_
+En quelque sorte, le parcours **consomme** le générateur, et une fois consommé
+il n'y a donc plus rien. Cela peut être une source d'incompréhension et de
+bugs. Commençons par une liste :[#]_
 
 .. code-block:: pycon
 
@@ -297,12 +318,13 @@ difficiles à appréhender. Commençons par une liste :[#]_
     True
 
 Lorsqu'un élément est présent dans une liste, en vérifier la présence ne change
-rien. C'est l'avantage d'avoir la liste en mémoire, ce qui permet toujours de
-vérifier que les données soient présentes. Encore une fois, la liste existe en
-entier, et elle est capable de fournir des informations sur son contenu sans
-être altérée.
+rien. C'est l'avantage d'avoir la liste en mémoire, permettant de vérifier
+la présence de données à tout instant. La liste existe en entier, et elle est
+capable de fournir des informations sur son contenu sans être altérée par cette
+opération.
 
-Maintenant, si j'utilise un générateur à la place d'une liste :
+Maintenant, voici ce qui se passe lorsque j'utilise un générateur à la place
+d'une liste :
 
 .. code-block:: pycon
 
@@ -313,12 +335,12 @@ Maintenant, si j'utilise un générateur à la place d'une liste :
     False
 
 Lors du premier ``2 in g``, le générateur est consommé jusqu'à ce que
-l'opérateur ``in`` en arrête l'itération après avoir trouver l'élément
-recherché. Lors du second ``2 in g``, le générateur a déjà consommé les
-premiers éléments, et est consommé entièrement par l'opérateur ``in``, qui ne
-trouve pas l'élément recherché : il retourne donc ``False``, et le générateur
-a été entièrement consommé. Il ne contient donc plus rien, comme le montre la
-suite :
+l'opérateur ``in`` en arrête le parcours en trouvant l'élément recherché. Au
+second ``2 in g``, le générateur a déjà consommé les premiers éléments, et
+l'opérateur ``in`` continue donc de parcourir le générateur jusqu'à le
+consommer entièrement, sans jamais trouver le bon élément : il retourne donc
+``False``, et le générateur ne contient plus rien. En essayant de transformer
+le générateur en liste, cette dernière est vide :
 
 .. code-block:: pycon
 
@@ -326,28 +348,30 @@ suite :
     []
 
 Il faut donc faire très attention lorsque vous manipulez un générateur, tant sa
-fonction est précise et particulière. Lorsque vous utilisez un itérable dans
-vos fonctions, assurez vous de bien réfléchir au comportement dont vous
-dépendez : s'il faut itérer plusieurs fois, ou bien connaître la taille de
-l'itérable, ou encore accéder directement à un élément par son index, alors ce
-n'est **pas** un générateur qu'il vous faut. C'est peut-être l'occasion de
-considérer `une séquence`__.
+fonction est précise et son comportement particulier. Lorsque vous utilisez un
+itérable dans vos fonctions, assurez vous de bien réfléchir au comportement
+dont vous dépendez : s'il faut parcourir plusieurs fois, ou bien connaître la
+taille de l'itérable, ou encore s'il faut accéder directement à un élément par
+son index, alors ce n'est **pas** un générateur qu'il vous faut. C'est
+peut-être l'occasion de considérer `une séquence`__ ou un autre type de données
+ayant les bonnes propriétés pour votre usage.
 
 .. __: https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range
 
 Étape intermédiaire
 -------------------
 
-L'avantage du générateur est plutôt dans sa capacité à exprimer un traitement
-séquentiel sur une liste d'éléments tout en contrôlant précisément quand est
-exécutée l'itération. Si personne n'itère sur un générateur, alors il ne
-consommera presque pas de ressources (mémoire comme CPU). Cela en fait un
-candidat idéal pour générer des résultats intermédiaires, sur lesquels il n'est
-jamais nécessaire d'itérer plus d'une fois :
+Un avantage que je trouve au générateur est sa capacité à exprimer un
+traitement séquentiel tout en permettant un contrôl précis quant à l'éxécution
+des opérations de génération.
+
+Si personne ne parcourt un générateur, il ne consomme presque pas de ressources
+(mémoire comme CPU). Cela en fait un candidat idéal pour générer des résultats
+intermédiaires, qu'il n'est pas nécessaire de parcourir plus d'une fois :
 
 .. code-block:: pycon
 
-    >>> l = [
+    >>> raw_source = [
     ...     "arbre",
     ...     "banane",
     ...     None,
@@ -356,20 +380,30 @@ jamais nécessaire d'itérer plus d'une fois :
     ...     "pizza",
     ... ]
     >>> 
-    >>> g = (word for word in l if word)
-    >>> ", ".join(word for word in g if len(word) > 5)
+    >>> words = (word for word in raw_source if word)
+    >>> filtered_words = (word for word in words if len(word) > 5)
+    >>> ", ".join(filtered_words)
     'banane, chaise'
 
-Le premier générateur permet de filtrer uniquement les éléments qui ne soient
-pas vides  (c'est à dire ni ``None`` ni une chaîne vide). Le second permet de
-filtrer les mots qui font plus de cinq lettres minimum. Enfin, la méthode
-``str.join`` permet de joindre tous les mots de la liste par une virgule,
-donnant le résultat final ``'banane, chaise'``.
+Il y a deux générateurs :
+
+* Le premier n'accepte que les éléments non vide (ni ``None`` ni une chaîne
+  vide).
+* Le second utilise cette liste pour filtrer sur les mots qui font plus de
+  5 caractères. [#]_
+
+La méthode ``str.join`` permet de joindre tous les mots de la liste par une
+virgule, donnant le résultat final ``'banane, chaise'``. La liste d'origine
+``raw_source`` n'a été parcourue qu'une seule et unique fois, bien qu'au
+travers de plusieurs générateurs.
+
+Une question de taille
+----------------------
 
 Imaginez un cas peut-être plus concret, avec un long fichier CSV de plusieurs
-milliers de lignes : au lieu de stocker tout le fichier, vous pouvez lire
-chaque ligne une à une, puis décider d'appliquer un ensemble de traitements,
-pour enfin écrire les lignes traitées dans un autre fichier, et ce,
+millions de lignes : stocker l'intégralité du fichier en mémoire n'est
+peut-être pas possible, ou bien consomme trop de ressources. Dans ce cas, le
+générateur permet d'effectuer une suite de traitements sur chaque ligne, et ce,
 **sans jamais stocker l'intégralité du fichier en mémoire** :
 
 .. code-block:: python
@@ -399,29 +433,30 @@ pour enfin écrire les lignes traitées dans un autre fichier, et ce,
         # write each lines
         writer.writerows(temporary)
 
-Ce bloc de code peut sembler un peu difficile d'approche, puisqu'il mélange
-plusieurs choses. La première partie concerne l'ouverture des fichiers
-d'entrée et de sortie, qui sont au format CSV. Ensuite, il s'agit d'obtenir
-des objets qui vont pouvoir lire et écrire ces fichiers (``reader`` et
-``writer``).
+Ce bloc de code mélange plusieurs choses : ouvrir des fichiers CSV pour la
+lecture et l'écriture (les objets ``reader`` et ``writer``), appliquer
+plusieurs traitements (via des générateurs), puis sauvegarder le résultat
+(via la méthode ``writer.writerows()``).
 
-Le ``reader`` est un itérateur sur les lignes du fichier, qui permet d'itérer
-sur ses lignes, une à une, grâce à une boucle ``for-in``, et je l'utilise ici
-pour appliquer la fonction ``parse(line)`` sur chaque ligne qui ne soit pas
-vide (``if line``). Cependant, comme j'utilise un générateur, à ce stade aucune
-opération n'est exécutée par le code.
+Le ``reader`` est un itérateur sur les lignes du fichier, qui permet de
+parcourir ce dernier ligne par ligne. J'utilise alors un premier générateur
+pour parcourir ce fichier et appliquer la fonction ``parse()`` sur chaque
+ligne qui ne soit pas vide (``if line``). Aucune opération n'est exécutée par
+le code à ce moment là, puisqu'il s'agit d'un générateur.
 
-Ensuite, j'applique la fonction ``transform(line)`` à chaque ligne valide
-d'après la fonction ``apply_condition_on(line)``. Là encore, aucune exécution
-de code, puisqu'il s'agit à nouveau d'un générateur.
+Ensuite, j'applique la fonction ``transform()`` à chaque ligne valide d'après
+la fonction ``apply_condition_on()``. Là encore, aucune exécution de code,
+puisqu'il s'agit à nouveau d'un générateur.
 
-En fin de course, j'appelle la méthode ``writer.writerows(temporary)`` qui va
-boucler sur le générateur pour écrire chaque ligne, une à une. C'est donc à ce
-moment là que va être exécuté le code des générateurs, sans jamais stocker
-plus d'un seul élément en mémoire (celui qui est lu et traité à ce moment là).
-Si le fichier d'entrée pèse plusieurs Go, le traitement sera peut-être long,
-il ne consommera cependant pas plus que la mémoire requise pour stocker une
-seule ligne de ce fichier !
+En fin de course, j'appelle la méthode ``writer.writerows()`` sur mon dernier
+générateur, provoquant son exécution : chaque ligne lue va être traitée puis
+écrite dans le fichier de sortie, et ce, sans jamais la conserver en mémoire
+une fois écrite. De fait, il n'y a jamais plus d'une ligne stockée en mémoire
+lors du parcours du fichier d'entrée et de son traitement.
+
+Imaginons alors que ce fichier pèse plusieurs Go, le traitement sera peut-être
+long, il ne consommera cependant pas plus que la mémoire requise pour stocker
+une seule ligne de ce fichier !
 
 Sucre syntaxique
 ----------------
@@ -451,13 +486,13 @@ tout à fait possible d'écrire la même chose sans générateur :
                     # write one line
                     writer.writerow(transform(temporary))
 
-Ce n'est donc pas une question de nombre de lignes, puisque la version avec des
-``for-in`` prend moins de place.
+Ce n'est donc pas une question du nombre de lignes de code, puisque la version
+avec des ``for-in`` prend moins de place.
 
 Je trouve la version avec générateur plus simple à lire, car séquentielle, là
 où la version avec une boucle et plusieurs conditions imbriquées est un peu
 plus difficile à suivre pour moi. C'est à la fois une question d'habitude, et
-une question du nombre d'opérations à garder en tête à chaque itération.
+une question du nombre d'opérations à garder en tête à chaque itération. [#]_
 Cependant, je vous laisse seul juge sur cet aspect là.
 
 Là où l'avantage me semble plus concret, c'est qu'il est plus facile de
@@ -536,8 +571,9 @@ clé transforme automatiquement la fonction dans laquelle il est appelé en
 générateur, c'est à dire qu'appeler la fonction ne va pas retourner son
 résultat, mais un générateur sur lequel itérer.
 
-Pour reprendre l'exemple précédent, les deux fonctions précédentes peuvent être
-modifiée pour utiliser ``yield`` au lieu de retourner un générateur :
+Pour reprendre les deux fonctions de l'exemple précédent, elles peuvent être
+modifiées pour utiliser ``yield`` au lieu de retourner directement un
+générateur :
 
 .. code-block:: python
 
@@ -553,23 +589,24 @@ modifiée pour utiliser ``yield`` au lieu de retourner un générateur :
             if apply_condition_on(line):
                 yield transform(line)
 
-Dans les deux cas cependant, le résultat de l'appel **est** un générateur :
+Dans les deux cas le résultat de l'appel **est** un générateur :
 
 .. code-block:: pycon
 
     >>> type(parse_all(range(10)))
     <class 'generator'>
 
-Dans ce cas relativement simpliste, cela n'apporte pas grand chose. Je trouve
-intéressant de présenter rapidement cette possibilité, qui pourra vous donner
-des idées ou vous lancer sur de nouvelles pistes de réflexion.
+Ici, la situation reste simpliste, et il n'y a pas vraiment de différence entre
+les deux implémentations. J'espère néanmoins que présenter cette possibilité
+vous donnera des idées et des pistes de réflexion.
 
 Imbrication
 ===========
 
 Jusqu'à présent, je n'ai utilisé qu'une seule boucle dans mes expressions,
-que ce soit pour générer une liste ou pour créer un générateur. Cependant,
-comment transformer le code suivant avec des listes en compréhension ou un
+que ce soit pour générer une liste ou pour créer un générateur.
+
+Comment transformer le code suivant avec des listes en compréhension ou un
 générateur ?
 
 .. code-block:: python
@@ -601,11 +638,14 @@ La syntaxe sera alors la suivante :
     ]
 
 Notez une chose importante : les itérations sont déclarées dans l'ordre dans
-lequel elles vont être exécutées, c'est à dire de haut en bas. La première
-itération est celle qui donne la variable ``i``, qui peut donc être utilisée
-dans la déclaration de la seconde itération pour la variable ``y``. Sans cet
-ordre de déclaration, il ne serait pas possible d'utiliser ``i`` dans
-``range(i + 1)`` puisqu'elle n'existerait pas encore.
+lequel elles vont être exécutées, c'est à dire de haut en bas :
+
+* La première itération donne la variable ``i``.
+* La seconde itération donne la variable ``y``, et utilise pour cela la
+  variable ``i`` précédemment déclarée.
+
+Sans cet ordre de déclaration, il ne serait pas possible d'utiliser ``i`` dans
+``range(i + 1)`` puisque cette variable n'existerait pas encore.
 
 Les autres itérables
 ====================
@@ -698,6 +738,19 @@ Notes
 .. [#] J'utilise ici la class built-in ``range`` qui permet de générer une
        liste de ``n`` éléments. C'est un outil très pratique que je vous invite
        à découvrir (lisez `sa documentation`__).
+.. [#] C'est un cas où réfléchir avec des types peut éventuellement aider :
+
+       * le type de la liste ``raw_source`` est ``List[Union[str, None]]``
+       * le premier générateur est une fonction qui a pour signature
+         ``List[Union[str, None]] -> List[str]``
+       * le second est une fonction qui a pour signature
+         ``List[str] -> List[str]``
+
+       Ce n'est pas aussi précis que je le souhaiterais, c'est une limite du
+       langage à laquelle je me confronte de plus en plus. Néanmoins, cela
+       permet d'exprimer, en partie, la logique des traitements.
+.. [#] Ma mémoire me joue souvent des tours. Mon truc, ce sont les systèmes
+       complexes, pas le code compliqué.
 .. [#] Je pourrais (encore) écrire un autre article sur le fait que,
        fondamentalement, il est possible d'appliquer une suite de traitements à
        partir de la donnée d'origine avec une approche fonctionnelle :
