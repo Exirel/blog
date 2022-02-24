@@ -2,7 +2,7 @@
 Liste en compréhension
 ======================
 
-:date: 2022-02-22 20:00
+:date: 2022-02-24 17:40
 :tags: python
 :slug: list-comprehension
 :authors: Florian Strzelecki
