@@ -340,7 +340,7 @@ considérer `une séquence`__.
 
 L'avantage du générateur est plutôt dans sa capacité à exprimer un traitement
 séquentiel sur une liste d'éléments tout en contrôlant précisément quand est
-exécutée l'itération. Si personne n'itére sur un générateur, alors il ne
+exécutée l'itération. Si personne n'itère sur un générateur, alors il ne
 consommera presque pas de ressources (mémoire comme CPU). Cela en fait un
 candidat idéal pour générer des résultats intermédiaires, sur lesquels il n'est
 jamais nécessaire d'itérer plus d'une fois :
@@ -530,7 +530,7 @@ traitements intermédiaires avant ou après les appels à ``parse_all`` et
 Yield
 =====
 
-Sans chercher à détailer plus dans cet article (déjà long), il est possible
+Sans chercher à détailler plus dans cet article (déjà long), il est possible
 de créer un générateur à partir d'un mot clé du langage : ``yield``. Ce mot
 clé transforme automatiquement la fonction dans laquelle il est appelé en
 générateur, c'est à dire qu'appeler la fonction ne va pas retourner son
@@ -620,7 +620,7 @@ itérable : les `Tuple`__, les `Set`__, et les `Mapping`__ existent aussi.
 Tuple
 -----
 
-La classe ``tuple`` fonctionne comme une version immutable de la classe
+La classe ``tuple`` fonctionne comme une version immuable de la classe
 ``list``. Pour générer un ``tuple``, le plus simple est de transformer une
 expression de générateur en ``tuple`` :
 
@@ -664,7 +664,7 @@ Vers l'infini et au-delà
 ========================
 
 Les listes en compréhension et les générateurs sont des outils très puissants,
-et je n'ai fait qu'effleurer la surface des possiblités.
+et je n'ai fait qu'effleurer la surface des possibilités.
 
 Par exemple, qu'est-ce qui se passerait si, à l'origine de votre traitement de
 données se trouvait un générateur infini ? Un générateur qui écoute une socket
