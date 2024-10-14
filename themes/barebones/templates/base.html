@@ -5,6 +5,11 @@
         <title>{% block title %}Florian Strzelecki{% endblock %}</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% if output_file == 'index.html' %}
+        <link rel="canonical" href="{{ SITEURL }}" />
+        {% else %}
+        <link rel="canonical" href="{{ SITEURL }}/{{ output_file }}" />
+        {% endif %}
         <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/blog.css" />
         <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/pygment.css" />
         {% endblock %}

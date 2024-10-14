@@ -7,7 +7,7 @@ import os
 
 AUTHOR = 'Florian Strzelecki'
 SITENAME = 'XRL'
-SITEURL = ''
+SITEURL = 'http://127.0.0.1:8000'
 THEME = os.path.join(os.path.curdir, 'themes', 'barebones')
 PATH = 'content'
 DEFAULT_CATEGORY = 'Général'

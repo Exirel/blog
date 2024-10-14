@@ -9,7 +9,7 @@ Remise à zéro
 :summary: La remise à zéro de mes publications en ligne.
 :category: meta
 
-.. figure:: https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/A_Vanitas%29_by_Edward_Collier.jpg/1024px-A_Vanitas%29_by_Edward_Collier.jpg
+.. figure:: https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/A_Vanitas_by_Evert_Collier.jpg/1280px-A_Vanitas_by_Evert_Collier.jpg
    :alt: A Vanitas
 
    **A Vanitas**, huile sur toile - Evert Collier, 1669 (`source`__)
