@@ -10,15 +10,17 @@
 </section>
 <aside class="article-meta">
     <p>
-        Par <a href="{{SITE_URL}}{{ article.author.url }}" rel="author">{{ article.author }}</a>.
+        Par <a href="{{ SITEURL }}/{{ article.author.url }}" rel="author">{{ article.author }}</a>.
         <br />Publié le <time class="published" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>.
-        <br />Dans la catégorie <a href="{{ SITE_URL }}{{ article.category.url }}" class="article-category">{{ article.category.name }}</a>
+        <br />Dans la catégorie <a href="{{ SITEURL }}/{{ article.category.url }}" class="article-category">{{ article.category.name }}</a>
     </p>
+    {% if article.tags %}
     <p class="article-tags">
         Tagué dans
         {% for tag in article.tags %}
-        <a href="{{ SITE_URL }}{{ tag.url }}" class="article-tag">{{ tag.name }}</a>{{ "," if not loop.last }}
+        <a href="{{ SITEURL }}/{{ tag.url }}" class="article-tag">{{ tag.name }}</a>{{ "," if not loop.last }}
         {% endfor %}
     </p>
+    {% endif %}
 </aside>
 {% endblock %}
