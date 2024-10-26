@@ -116,6 +116,7 @@ blockquote i, blockquote em {
     text-indent: 1.5em;
 }
 
+.article * + pre,
 .article * + table,
 .article * + .admonition {
     margin-top: 1.5em;
@@ -149,6 +150,7 @@ blockquote i, blockquote em {
 }
 
 blockquote + p,
+pre + p,
 .admonition + p,
 .figure + p,
 .highlight + p {
