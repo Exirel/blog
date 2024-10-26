@@ -16,8 +16,9 @@ là.
 .. note::
 
     Dans les exemples de requêtes SQL j'utilise la syntaxe pour `PostgreSQL`__.
-    Il est normalement possible d'adapter chaque requête pour d'autres SGBD,
-    tels que MySQL/MariaDB ou Microsoft SQL Server.
+    Il est normalement possible d'adapter la majorité des requêtes pour
+    d'autres SGBD, tels que MySQL/MariaDB ou Microsoft SQL Server, en prenant
+    en compte leurs différentes limites, contraintes, et spécificités.
 
 .. contents:: Sommaire
 
@@ -40,14 +41,14 @@ De l'autre côté, chaque objet B est relié à zéro ou un et un seul objet A.
 La notation ``x..y`` me permet de dire "au moins ``x`` et au plus ``y``". En
 plus des valeurs numériques, je peux utiliser ``*`` :
 
-* ``0..*`` pour "zéro, un, ou plusieurs", qui se raccourci en ``*``
+* ``0..*`` pour "zéro, un, ou plusieurs", qui se raccourcit en ``*``
 * ``5..*`` pour "au moins cinq"
 
 Ceci étant derrière nous [#]_ passons au sujet de fond : comment transposer des
 relations et leurs cardinalités dans une base de données relationnelles ? Pour
-la suite de l'article, je considère que tous les objets disposent d'un clé
+la suite de l'article, je considère que tous les objets disposent d'une clé
 primaire (notée "``PK``") et que chaque clé étrangère (notée "``FK(<table>)``")
-est basé sur la ``PK`` de la table ``<table>``. Lorsque je parle du champ
+est basée sur la ``PK`` de la table ``<table>``. Lorsque je parle du champ
 ``B.FK(A)``, je veux parler du champ de la table B qui porte une contrainte de
 clé étrangère vers la table A.
 
@@ -368,14 +369,15 @@ adjoindre un attribut "est la catégorie principale" (``art_cat.is_main``) :
     );
 
     CREATE UNIQUE INDEX art_cat_is_main_unique
-        ON art_cat (fk_a, fk_c, is_main)
+        ON art_cat (fk_a, is_main)
         WHERE is_main;
 
 Ici, ce que nous voulons c'est que pour n'importe quelle association de
 catégories à un article, il n'existe pour chaque article qu'une seule et unique
 catégorie principale (et donc potentiellement plusieurs catégories
 secondaires). La solution que j'ai choisie est un `index partiel`__, avec une
-contrainte conditionnelle (``WHERE is_main``) d'unicité (``UNIQUE INDEX``).
+contrainte conditionnelle (``WHERE is_main``) d'unicité
+(``UNIQUE INDEX``) [#]_.
 
 Cela permet de s'assurer que cette requête ne retournera qu'au plus un seul
 résultat par article, avec sa catégorie principale (si elle existe, sinon
@@ -425,5 +427,25 @@ Notes
            [A]- 0..1 --- 0..1 -[B]
 
 .. [#] Oui, ça aussi, c'est un exercice que je laisse à votre responsabilité.
+.. [#] Il est possible d'utiliser une autre technique, compatible avec MySQL :
+       vous pouvez rendre nullable le champ ``is_main`` tout en appliquant une
+       contrainte d'unicité. MySQL ignorant les valeurs ``NULL`` vous obtenez
+       la même intégrité des données en associant ``TRUE`` aux catégories
+       principales, et ``NULL`` pour toutes les autres.
+
+       Cela donne cette structure :
+
+       .. code-block:: sql
+
+           CREATE TABLE art_cat (
+               fk_a INT UNSIGNED NOT NULL,
+               fk_b INT UNSIGNED NOT NULL,
+               is_main BOOL NULL,
+               CONSTRAINT UNIQUE (fk_a, is_main)
+           );
+
+       **Attention** : vous ne pouvez pas insérer ``FALSE`` plus d'une fois
+       par article, il faut donc utiliser ``NULL`` pour désigner une catégorie
+       secondaire.
 
 .. __: https://en.wikipedia.org/wiki/Cardinality_(data_modeling)
