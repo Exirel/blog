@@ -15,12 +15,16 @@
         {% endblock %}
     </head>
     <body>
-        {% block page_nav %}
-        <nav>
-            <a href="{{ SITEURL }}/">Accueil</a>
-        </nav>
-        {% endblock %}
-        {% block page_title %}<h1>Florian Strzelecki</h1>{% endblock %}
+        <div class="header">
+            {%- block page_nav -%}
+                <nav>
+                    <a href="{{ SITEURL }}/">Accueil</a>
+                </nav>
+            {% endblock %}
+            {%- block page_title -%}
+                <h1>Florian Strzelecki</h1>
+            {% endblock %}
+        </div>
         {% block page_content %}
         <div class="container">
             {% block content %}{% endblock %}
