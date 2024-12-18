@@ -11,7 +11,7 @@ Refactoring et interfaces
 
 Lorsqu'il est question d'interface dans le code, la plupart des développeurs
 vont probablement penser à quelque chose comme ``IController`` ou
-``ParserInterface``, ou autre construction fait pour la programmation orientée
+``ParserInterface``, ou autre construction faite pour la programmation orientée
 objet, où une classe concrète implémente une interface.
 
 Cependant, dans le cadre du refactoring, j'ai tendance à considérer le concept
@@ -21,9 +21,9 @@ je `refactore une fonction`__ je prends en compte tant son comportement que
 ses entrées et sorties comme faisant partie d'un contrat entre la fonction et
 là où je vais en avoir besoin.
 
-Quelque part, les "interfaces" au sens programmation orienté objet ne sont
+Quelque part, les "interfaces" au sens programmation orientée objet ne sont
 jamais qu'une façon de représenter ce contrat, et il n'est pas surprenant
-qu'elles ont une place de choix dans les principes SOLID.
+de les retrouver à une place de choix dans les principes SOLID.
 
 .. __: {filename}/refactoring-fonction.rst
 
@@ -44,9 +44,9 @@ doive réfléchir s'il faut appliquer I (`ISP`__, pour "Interface segregation
 principle") ou D (`DIP`__ pour "Dependency inversion principle") à la
 situation [#]_ que je cherche à résoudre ou expliquer.
 
-Mettons donc ces principes de côté pour la suite, puisque je ne compte ni
-expliquer ces principes, ni comment les appliquer [#]_. Je vais plutôt partir
-d'un bout de code, et essayer de voir comment réfléchir en pensant aux
+Mettons donc ces principes de côté pour la suite, puisque je ne compte
+expliquer ni ces principes, ni comment les appliquer [#]_. Je vais plutôt
+partir d'un bout de code, et essayer de voir comment réfléchir en pensant aux
 interfaces. En particulier : la dépendance entre deux modules, et comment
 arriver aux bonnes abstractions et interfaces.
 
@@ -68,7 +68,7 @@ Tout se passe dans deux fichiers :
   préférences de recherche
 
 Voici un extrait du module ``search`` qui montre *l'interface* de la fonction
-``search_for_user`` sans rentrer dans les détails :
+``search_for_user`` sans plus rentrer dans les détails :
 
 .. code-block:: python
 
@@ -99,7 +99,7 @@ Analyse des problèmes
 =====================
 
 Ce qui compte maintenant à la lecture de ces extraits, c'est l'analyse de la
-structure générale de ces deux modules et d'en comprendre comment ils
+structure générale de ces deux modules et de là comprendre comment ils
 s'articulent pour répondre à la fonctionnalité de recherche. Cela permet
 d'isoler deux problèmes qui sont l'interdépendance et le couplage fort.
 
@@ -107,7 +107,7 @@ L'interdépendances apparaît très vite :
 
 * le module ``search`` dépend du module ``user`` au travers de
   ``user.Profile``, qui lui permet d'obtenir un profil de recherche
-* le module ``user`` dépend en retour au module ``search`` pour créer un objet
+* le module ``user`` dépend en retour du module ``search`` pour créer un objet
   qui sera utile à la fonctionnalité de recherche
 
 Cette interdépendance entraîne à son tour le problème du couplage fort, où il
@@ -128,7 +128,7 @@ que la moindre modification coûtera plus cher.
 
 C'est le coût du "code smell", du "legacy code", ou encore de ce qu'on
 appelle [#]_ la "dette technique". C'est parce qu'il y a un coût caché, presque
-invisible, à ce genre de pratiques, que des principes ont fini par émergés. De
+invisible, à ce genre de pratiques, que des principes ont fini par émerger. De
 la même façon que le *coding style* est une liste de règles à appliquer issues
 de l'expériences de tout ce qu'il ne faut *pas* faire, c'est l'expérience de
 problèmes de structures qui a donné des listes de principes comme SOLID, les
@@ -173,8 +173,8 @@ théoriques.
 Pourquoi ?
 ==========
 
-En parlant de question, celle qui reviendra toujours sur le podium de mes
-premières questions lors d'une relecture de code : **pourquoi** ?
+En parlant de question, celle qui revient toujours dans le top 3 des premières
+questions que je pose lors d'une relecture de code : **pourquoi** ?
 
 Regardons justement la fonction ``search.search_for_user`` :
 
@@ -258,8 +258,7 @@ Oui, cela veut dire que le module ``search`` dépend toujours du module
 ``user``, et en retour ``user.Profile`` doit exposer un certain nombres de
 données pour permettre au module ``search`` de créer l'objet qui lui convient.
 Cependant, il existe désormais une couche intermédiaire entre la recherche et
-les objets métiers. Cela permet de réduire le couplage fort entre
-les deux modules à un couplage *faible*.
+les objets métiers. Cela permet de réduire le couplage entre les deux modules.
 
 
 Compromis et principes
@@ -276,7 +275,9 @@ Cependant, c'est là que réside le compromis : il est maintenant possible de
 retirer et modifier la fonctionnalité de recherche sans toucher au reste...
 même si toucher au reste peut amener à altérer la fonctionnalité de recherche.
 C'est une question de choix [#]_ que de prioriser certaines dépendances plutôt
-que d'autres.
+que d'autres. Il est tout à fait possible d'aller plus loin - c'est un choix
+qui doit se faire au cas par cas, et qu'il ne faut pas hésiter à remettre en
+question 6 mois plus tard.
 
 Vous noterez que je n'ai reparlé ni d'interface ni des principes SOLID jusqu'à
 présent. Je vous invite à reprendre le code de ``search`` :
