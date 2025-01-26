@@ -3,7 +3,6 @@ Confinement
 ===========
 
 :date: 2020-05-10 20:00
-:tags: blog
 :slug: confinement
 :authors: Florian Strzelecki
 :summary: Deux mois de confinement en quelques lignes.

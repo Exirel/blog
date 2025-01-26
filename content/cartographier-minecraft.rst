@@ -3,11 +3,11 @@ Cartographier Minecraft
 =======================
 
 :date: 2020-07-01 12:00
-:tags: minecraft
 :slug: cartographier-minecraft
 :authors: Florian Strzelecki
 :summary: Mon activité favorite et sa logistique.
 :category: games
+:tags: minecraft
 
 L'activité qui m'apporte le plus de satisfaction dans Minecraft n'est pas de
 construire des choses incroyables : je préfère cartographier l'espace.

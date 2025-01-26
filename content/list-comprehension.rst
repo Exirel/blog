@@ -3,11 +3,11 @@ Liste en compréhension
 ======================
 
 :date: 2022-02-24 17:40
-:tags: python
 :slug: list-comprehension
 :authors: Florian Strzelecki
 :summary: Les "list-comprehensions" en Python
 :category: dev
+:tags: python
 
 .. figure:: https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Sugar_2xmacro.jpg/1280px-Sugar_2xmacro.jpg
    :alt: Une photo de grains de sucrose rafinée.

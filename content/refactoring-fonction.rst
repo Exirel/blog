@@ -3,11 +3,11 @@ Refactoring d'une fonction
 ==========================
 
 :date: 2024-10-13 11:00
-:tags: python
 :slug: refactoring-fonction
 :authors: Florian Strzelecki
 :summary: Refactoring d'une fonction
 :category: dev
+:tags: python, software architecture, refactoring
 
 Le refactoring, certains l'aiment, d'autres le détestent. Pour moi, c'est une
 partie intégrante de mon processus de développement. C'est une activité

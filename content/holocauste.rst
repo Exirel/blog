@@ -3,7 +3,6 @@ Se souvenir de l'holocauste
 ===========================
 
 :date: 2020-09-16 16:30
-:tags: blog
 :slug: holocauste
 :authors: Florian Strzelecki
 :summary: Quand avez-vous appris pour l'holocauste ?

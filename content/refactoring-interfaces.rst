@@ -7,7 +7,7 @@ Refactoring et interfaces
 :authors: Florian Strzelecki
 :summary: Refactoring et interfaces, loose coupling et SOLID
 :category: dev
-:tags: python, software architecture
+:tags: python, software architecture, refactoring
 
 Lorsqu'il est question d'interface dans le code, la plupart des développeurs
 vont probablement penser à quelque chose comme ``IController`` ou

@@ -3,7 +3,6 @@ Remise à zéro
 =============
 
 :date: 2020-04-06 20:00
-:tags: blog
 :slug: remise-a-zero
 :authors: Florian Strzelecki
 :summary: La remise à zéro de mes publications en ligne.
