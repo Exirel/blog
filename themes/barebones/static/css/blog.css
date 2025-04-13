@@ -20,12 +20,12 @@ body {
 }
 
 .header {
-    max-width: 40rem;
+    max-width: 60rem;
     margin: 0 auto;
 }
 
 .container {
-    max-width: 40rem;
+    max-width: 60rem;
     margin: 0 auto;
 }
 
@@ -51,15 +51,26 @@ body {
     padding: 0;
 }
 
-@media screen and (min-width: 65rem) {
-    .header {
-        max-width: 60rem;
-    }
-
+@media screen and (min-width: 80rem) {
     .container {
         display: grid;
-        max-width: 60rem;
-        grid-template-columns: 2fr 1fr;
+        grid-template-areas:
+            "a a a"
+            "b b c"
+            "b b c";
+    }
+
+    .container h1 {
+        grid-area: a;
+    }
+
+    .container article,
+    .container section {
+        grid-area: b;
+    }
+
+    .container aside {
+        grid-area: c;
     }
 
     .article + .article-meta {

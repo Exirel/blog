@@ -21,12 +21,10 @@
                     <a href="{{ SITEURL }}/">Accueil</a>
                 </nav>
             {% endblock %}
-            {%- block page_title -%}
-                <h1>Florian Strzelecki</h1>
-            {% endblock %}
         </div>
         {% block page_content %}
-        <div class="container">
+        <div class="container{% block hcard %}{% endblock %}">
+            {% block page_title %}{% endblock %}
             {% block content %}{% endblock %}
         </div>
         {% endblock %}

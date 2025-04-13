@@ -2,6 +2,10 @@
 
 {% block page_nav %}{% endblock %}
 
+{% block hcard %} h-card{% endblock %}
+
+{% block page_title %}<h1 class="p-name">Florian Strzelecki</h1>{% endblock %}
+
 {% block content %}
 <section class="page-list">
     <p>
@@ -10,21 +14,30 @@
         Ainsi que la photo, le cinéma, la lecture, les jeux vidéo et les jeux
         de rôle, ou encore de plateau et de cartes.
     <p>
-        Je suis actuellement employé par la société Hellowork, en tant
-        qu'architecte logiciel pour Hellowork éducation. Je dessine des
-        diagrammes et participe à des réunions, principalement.
+        Je suis actuellement employé par le
+        <a class="p-org h-card" href="https://www.hellowork-group.com/fr/">Hellowork group</a>
+        à <span class="p-locality">Rennes</span>,
+        en tant que <span class="p-job-title">Staff Engineer</span> dans
+        l'équipe d'architectes.
+        Je travaille principalement avec les plateformes orientations et
+        formation, et je passe la majorité de mon temps à dessiner des
+        diagrammes, participer à des réunions, et aider mes collègues.
     </p>
     <p>
         Vous pouvez me contacter directement par mail à
-        florian.strzelecki@gmail.com.
+        <span class="u-email">florian.strzelecki@gmail.com</span>
+        ou tentez de me joindre sur
+        <a rel="me" href="https://www.linkedin.com/in/florian-strzelecki/">LinkedIn</a>.
+        Certaines de mes contributions sont publiées sur
+        <a rel="me" href="https://github.com/Exirel/">Github</a>.
     </p>
 
     <h2>Quelques articles</h2>
-    <ul>
+    <ul class="h-feed">
         {% for article in dates_page.object_list %}
-        <li>
-            <time class="published" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
-            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalien vers {{ article.title|striptags }}">{{ article.title }}</a>
+        <li class="h-entry">
+            <time class="published dt-published" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+            <a class="p-name" href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalien vers {{ article.title|striptags }}">{{ article.title }}</a>
         </li>
         {% endfor %}
     </ul>

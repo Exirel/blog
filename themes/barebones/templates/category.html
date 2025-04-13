@@ -2,15 +2,21 @@
 
 {% block title %}{{ category.name|striptags }}{% endblock %}
 
-{% block page_title %}<h1>Articles de la catégorie {{ category.name }}</h1>{% endblock %}
+{% block hcard %} h-feed{% endblock %}
+
+{% block page_title %}<h1 class="p-name">{{ category.name }}</h1>{% endblock %}
 
 {% block content %}
 <section class="category page-list">
+    <p class="p-summary">Tous les articles de la catégorie
+        "{{ category.name }}", du plus récent au plus ancien.</p>
     <ul>
         {% for article in dates %}
-        <li>
-            <time class="published" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
-            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalien vers {{ article.title|striptags }}">{{ article.title }}</a><br />
+        <li class="h-entry">
+            <time class="published dt-published" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+            <a href="{{ SITEURL }}/{{ article.url }}" class="u-url" rel="bookmark" title="Permalien vers {{ article.title|striptags }}">
+                <span class="p-name">{{ article.title }}</span>
+            </a>
         </li>
         {% endfor %}
     </ul>
