@@ -128,16 +128,13 @@ pas encore passé le pas vers une application web. Guidé là encore par une
 connaissance, je me dirige vers PHP : je découvre `LAMP`__, avec EasyPHP sur
 Windows, et je me lance à la découverte des tutoriels (en français) sur PHP.
 
-À cette époque, mon anglais n'est pas encore suffisant pour me permettre
-d'accéder à toutes les ressources nécessaires sur le sujet, et certains
-concepts m'échappent complètement, en plus de tomber dans tous les pièges de
-la programmation :
-
-Autant vous dire qu'à l'époque où `Lycos`__ et `Yahoo!`__ sont mes moteurs de
-recherche principaux, j'ai encore du mal à résoudre des problèmes qui me
-semblent aujourd'hui triviaux : comment ça PHP 3 et PHP 4 ce n'est pas pareil ?
-C'est quoi un "array" ? ``$_SESSION`` c'est beaucoup trop magique !
-`T_PAAMAYIM_NEKUDOTAYIM`__ ??? Je ne vous parle même pas d'apprendre
+Mon anglais n'est pas encore suffisant pour me permettre d'accéder à toutes les
+ressources nécessaires sur le sujet, et certains sujets m'échappent
+complètement. Autant vous dire qu'à l'époque où `Lycos`__ et `Yahoo!`__ sont
+mes moteurs de recherche principaux, j'ai encore du mal à résoudre des
+problèmes qui me semblent aujourd'hui triviaux : comment ça PHP 3 et PHP 4 ce
+n'est pas pareil ? C'est quoi un "array" ? ``$_SESSION`` c'est beaucoup trop
+magique ! `T_PAAMAYIM_NEKUDOTAYIM`__ ??? Je ne vous parle même pas d'apprendre
 JavaScript, que je choisi soigneusement d'ignorer pour le moment.
 
 Quoi qu'il en soit, je transforme mes belles pages HTML/CSS *optimisées pour
@@ -237,24 +234,27 @@ sous-informaticien. Si je suis architecte aujourd'hui, ce n'est pas sans une
 certaine dose d'efforts et de sacrifices. [#]_
 
 Pour toutes ces raisons j'ai continué à apprendre par moi-même, notamment en
-suivant les standards du W3C (à l'époque du xHTML, des années avant HTML5), en
-apprenant à créer des sites compatibles pour IE6 et Firefox, en découvrant au
-travail le fonctionnement de JavaScript et de la technologie `AJAX`__. J'ai
-appris à maîtriser les feuilles CSS, et j'ai eu la joie (non) de découvrir tous
-les problèmes de sensibilité à la casse et de collation des tables de MySQL.
+suivant les standards du `W3C`__ (à l'époque du xHTML, des années avant HTML5,
+période où je découvre la `checklist OpQuast`__), en apprenant à créer des
+sites compatibles pour IE6 et Firefox, en découvrant au travail le
+fonctionnement de JavaScript et de la technologie `AJAX`__. J'ai appris à
+maîtriser les feuilles CSS, et j'ai eu la joie (non) de découvrir tous les
+problèmes de sensibilité à la casse et de collation des tables de MySQL.
 
-Une grande partie de mon apprentissage pendant mes deux premières années se
-fait principalement par l'échec : j'utilise une solution naïve qui ne
-fonctionne pas, et plus d'une fois je ne le découvre qu'en production. Le
-stress est particulièrement élevé à plusieurs reprises, et j'ai la chance
-d'être en bonne santé (physique et mentale) pour le supporter. Je n'ai pas
-encore de mentor, et il me manque définitivement des outils pour m'en sortir :
-je ne connais aucun `VCS`__, si j'ai entendu parler des tests à l'IUT je ne
-connais aucune application pratique ni framework, et comble de l'ignorance je
-suis bien incapable d'utiliser SSH ou de configurer un serveur Apache. Ces
-briques qui me semblent aujourd'hui essentielles à mon quotidien me sont
-étrangères, et personne n'est là pour me les enseigner.
+Ma majorité de mon apprentissage pendant mes deux premières années se fait par
+l'échec : j'utilise une solution naïve qui ne fonctionne pas, et plus d'une
+fois je ne le découvre qu'en production. Le stress est particulièrement élevé à
+plusieurs reprises, et j'ai la chance d'être en bonne santé (physique et
+mentale) pour le supporter. Je n'ai pas encore de mentor, et il me manque
+définitivement des outils pour m'en sortir : je ne connais aucun `VCS`__, si
+j'ai entendu parler des tests à l'IUT je ne connais aucune application pratique
+ni framework, et comble de l'ignorance je suis bien incapable d'utiliser SSH ou
+de configurer un serveur Apache. Ces briques qui me semblent aujourd'hui
+essentielles à mon quotidien me sont étrangères, et personne n'est là pour me
+les enseigner.
 
+.. __: https://www.w3.org/
+.. __: https://checklists.opquast.com/
 .. __: https://fr.wikipedia.org/wiki/Ajax_(informatique)
 .. __: https://fr.wikipedia.org/wiki/Logiciel_de_gestion_de_versions
 
@@ -441,9 +441,9 @@ J'en suis là pour le moment. [#]_
 Privilèges
 ==========
 
-À l'origine de cet article je souhaitais écrire une courte [#]_ introduction à la
-documentation, en expliquant pourquoi c'était devenu un sujet si important pour
-moi, dans ma carrière et dans mon travail. Cela s'est vite transformé en
+À l'origine de cet article je souhaitais écrire une courte [#]_ introduction à
+la documentation, en expliquant pourquoi c'était devenu un sujet si important
+pour moi, dans ma carrière et dans mon travail. Cela s'est vite transformé en
 exercice autobiographique. J'invite mon lectorat à croire en sa sincérité, bien
 que certains éléments aient été obfusqués et que j'ai choisi d'être
 volontairement un peu flou sur certaines dates.
