@@ -3,7 +3,7 @@ Narration et documentation
 ==========================
 
 :date: 2025-10-18 15:00
-:slug: storytelling-and-documentation
+:slug: narration-et-documentation
 :authors: Florian Strzelecki
 :summary: L'art de raconter une histoire dans sa documentation
 :category: dev
