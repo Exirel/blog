@@ -11,14 +11,15 @@ Le temps de l'architecture logicielle
 
 Si au niveau atomique le temps et les durées nous sont incompréhensibles [#]_,
 plus nous remontons les couches et plus le temps devient palpable,
-jusqu'à s'étioler à nouveau vers l'infini. Il reste, certe, peut-être difficile
-d'appréhender l'infime fraction de seconde que nécessite une opération au
-niveau du CPU. Les secondes qui passent à afficher une page nous paraissent,
-elles, bien plus concrètes. De là, le temps de travail des développeurs et
-développeuses qui s'organise en itérations de quelques semaines [#]_ retrouve
-une échelle humaine, tout comme la liste des fonctionnalités prévues pour les
-quelques prochains mois. Parfois, le tout est planifié sur un trimestre, voire
-sur un semestre et parfois, en année — bien que personne n'y croit vraiment.
+jusqu'à s'étioler à nouveau vers l'infini. Il reste, certes, peut-être
+difficile d'appréhender l'infime fraction de seconde que nécessite une
+opération au niveau du CPU. Les secondes qui passent à afficher une page nous
+paraissent, elles, bien plus concrètes. De là, le temps de travail des
+développeurs et développeuses qui s'organise en itérations de quelques
+semaines [#]_ retrouve une échelle humaine, tout comme la liste des
+fonctionnalités prévues pour les quelques prochains mois. Parfois, le tout est
+planifié sur un trimestre, voire sur un semestre et parfois, en année — bien
+que personne n'y croit vraiment.
 
 Ce passage de l'électronique à l'écrit, et de l'écrit au monde des idées
 produit un étirement du temps, à tel point qu'au plus haut niveau d'abstraction
