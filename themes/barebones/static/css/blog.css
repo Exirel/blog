@@ -14,7 +14,7 @@
 }
 
 body {
-    font-family: "Liberation Sans", Arial, serif;
+    font-family: sans-serif;
     background-color: var(--xrl-primary-bg);
     padding: 1em;
 }
